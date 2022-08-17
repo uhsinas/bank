@@ -49,12 +49,41 @@ pswdchange(event:any){
 }
 
 
-login(){
+//  login(){
+//    //fetch acno
+//    var acno=this.acno
+
+//    //fetch pswd
+//    var pswd=this.pswd
+
+//    let userdetails=this.database
+//    if(acno in userdetails){
+//      if(pswd==userdetails[acno]['password']){
+//        alert('Log in successful')
+//    }
+//    else{
+//      alert('Incorrect password')
+//    }
+//    }
+//    else{ 
+//      alert('user does not exist')
+//  }
+  
+//    }
+
+
+//}
+
+
+
+login(a:any,p:any){
+  console.log(a);
+  
   //fetch acno
-  var acno=this.acno
+  var acno=a.value
 
   //fetch pswd
-  var pswd=this.pswd
+  var pswd=p.value
 
   let userdetails=this.database
   if(acno in userdetails){
@@ -68,8 +97,7 @@ login(){
   else{ 
     alert('user does not exist')
 }
-  
+ 
   }
-
-
+  
 }

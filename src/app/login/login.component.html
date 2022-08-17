@@ -15,15 +15,17 @@
 
 
             <div class="m-3">
-                <input (change)="acnochange($event)" type="text" class="form-control"  [placeholder]="accplaceholder">
+                <!-- acno (change)="acnochange($event)" -->
+                <input #acno class="form-control"  type="text" [placeholder]="accplaceholder">
             </div>
             
             <div class="m-3">
-                <input (change)="pswdchange($event)" class="form-control" type="password" placeholder="Password">
+                <!-- password -->
+                <input #pswd class="form-control" type="password" placeholder="Password">
             </div>
             
             <div class="m-3">
-                <input (click)="login()" class="btn btn-success" type="button" value="Login" name="" id="loginbtn">
+                <input (click)="login(acno,pswd)" class="btn btn-success" type="button" value="Login" name="" id="loginbtn">
             </div>
             
             
