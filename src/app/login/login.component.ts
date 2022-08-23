@@ -1,4 +1,7 @@
 import { ApplicationRef, Component, OnInit } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { DataService } from '../database/data.service';
 
 @Component({
   selector: 'app-login',
@@ -26,9 +29,20 @@ database:any={
 
 
 }
+  
+//form group
+loginForm = this.formBuilder.group({
+
+ 
+  acno:['',[Validators.required,Validators.pattern('[0-9]*')]],
+  pswd:['',[Validators.required,Validators.pattern('[a-zA-Z0-9]*')]]
+
+})
 
 
-  constructor() { }
+
+
+  constructor(private formBuilder:FormBuilder,private router:Router,private dataservice:DataService) { }
 
   ngOnInit(): void {
   }
@@ -49,55 +63,38 @@ pswdchange(event:any){
 }
 
 
-//  login(){
-//    //fetch acno
-//    var acno=this.acno
+ login()
+ {
+   //fetch acno
+   var acno=this.loginForm.value.acno
 
-//    //fetch pswd
-//    var pswd=this.pswd
+   //fetch pswd
+   var pswd=this.loginForm.value.pswd
 
-//    let userdetails=this.database
-//    if(acno in userdetails){
-//      if(pswd==userdetails[acno]['password']){
-//        alert('Log in successful')
-//    }
-//    else{
-//      alert('Incorrect password')
-//    }
-//    }
-//    else{ 
-//      alert('user does not exist')
-//  }
-  
-//    }
+   if(this.loginForm.valid){
+    const result = this.dataservice.login(acno,pswd)
+ if(result)
+ {
 
+  alert('Log in successful')
 
-//}
+  //navigation
 
-
-
-login(a:any,p:any){
-  console.log(a);
-  
-  //fetch acno
-  var acno=a.value
-
-  //fetch pswd
-  var pswd=p.value
-
-  let userdetails=this.database
-  if(acno in userdetails){
-    if(pswd==userdetails[acno]['password']){
-      alert('Log in successful')
-  }
-  else{
-    alert('Incorrect password')
-  }
-  }
-  else{ 
-    alert('user does not exist')
+  this.router.navigateByUrl('dashboard')
 }
+else
+
+{
+  alert('Invalid Form')
+}
+    
+   }
+
+   
+
  
-  }
-  
+    }
 }
+
+
+

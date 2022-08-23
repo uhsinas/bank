@@ -1,0 +1,161 @@
+<h2>Welcome {{user}}</h2>
+<div  class="m-5">
+    <a href="/transaction">transaction history</a>
+</div>
+<div class="row">
+
+    <!-- deposit -->
+<div class="col-lg-6">
+
+    <div class="border w-75 m-5 container">
+        <h2 class="text-center text-success" >Deposit Form</h2>
+   
+
+
+
+    <form [formGroup]="depositForm" (ngSubmit)="deposit()" action="" class= "p-3" >
+
+        
+
+
+        <div class="m-3">
+            <!-- acno (change)="acnochange($event)" -->
+            <!-- #acno=tmplt rfrnc vrbl -->
+            <input  formControlName="acno" name="acno" class="form-control"  type="text" placeholder="Account Number">
+        </div>   
+
+        <div *ngIf="this.depositForm.get('acno')?.touched && this.depositForm.get('acno')?.errors" class="m-3" style="color: red;">
+            invalid Account Number
+        </div>
+
+        
+        <div class="m-3">
+            <!-- password -->
+            <input formControlName= "pswd" name="password" class="form-control" type="password" placeholder="Password">
+        </div> 
+
+        <div *ngIf="this.depositForm.get('pswd')?.touched && this.depositForm.get('pswd')?.errors" class="m-3" style="color: red;">
+            invalid Password
+        </div>
+
+        <div class="m-3">
+         <!-- amount -->
+         <input  formControlName= "amount" name="amount" class="form-control" type="text" placeholder="Amount">
+        </div>
+
+        <div *ngIf="this.depositForm.get('amount')?.touched && this.depositForm.get('amount')?.errors" class="m-3" style="color: red;">
+            invalid username
+        </div>
+
+        
+        <div class="m-3">
+            <input  class="btn btn-success" type="submit" value="Deposit" name="" id="loginbtn">
+        </div>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        </form>
+        
+        
+        
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+    <!-- withdraw -->
+<div class="col-lg-6">
+
+    
+
+        <div class="border w-75 m-5 container">
+            <h2 class="text-center text-success" >Withdraw Form</h2>
+       
+    
+    
+    
+        <form [formGroup]="withdrawForm" (ngSubmit)="withdraw()" action="" class= "p-3" >
+    
+            
+    
+    
+            <div class="m-3">
+                <!-- acno (change)="acnochange($event)" -->
+                <!-- #acno=tmplt rfrnc vrbl -->
+                <input  formControlName="acno" name="acno" class="form-control"  type="text" placeholder="Account Number">
+            </div>   
+    
+            <div *ngIf="this.withdrawForm.get('acno')?.touched && this.withdrawForm.get('acno')?.errors" class="m-3" style="color: red;">
+                invalid Account Number
+            </div>
+    
+            
+            <div class="m-3">
+                <!-- password -->
+                <input formControlName= "pswd" name="password" class="form-control" type="password" placeholder="Password">
+            </div> 
+    
+            <div *ngIf="this.withdrawForm.get('pswd')?.touched && this.withdrawForm.get('pswd')?.errors" class="m-3" style="color: red;">
+                invalid Password
+            </div>
+    
+            <div class="m-3">
+             <!-- amount -->
+             <input  formControlName= "amount" name="amount" class="form-control" type="text" placeholder="Amount">
+            </div>
+    
+            <div *ngIf="this.withdrawForm.get('amount')?.touched && this.withdrawForm.get('amount')?.errors" class="m-3" style="color: red;">
+                invalid username
+            </div>
+    
+            
+            <div class="m-3">
+                <input  class="btn btn-success" type="submit" value="Withdraw" name="" id="loginbtn">
+            </div>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            </form>
+            
+            
+            
+        </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+</div>
+
+
+
+</div>

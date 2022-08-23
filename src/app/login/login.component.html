@@ -9,23 +9,32 @@
 
 
 
-        <form action="" class= "p-3" >
-
+        <form [formGroup]="loginForm" (ngSubmit)="login()" action="" class= "p-3" >
+           
          
 
 
             <div class="m-3">
                 <!-- acno (change)="acnochange($event)" -->
-                <input #acno class="form-control"  type="text" [placeholder]="accplaceholder">
+                <!-- #acno=tmplt rfrnc vrbl -->
+                <input  formControlName= "acno"  name="acno" class="form-control"  type="text" [placeholder]="accplaceholder">
+            </div>
+
+            <div *ngIf="this.loginForm.get('acno')?.touched && this.loginForm.get('acno')?.errors" class="m-3" style="color: red;">
+                invalid Account Number
             </div>
             
             <div class="m-3">
                 <!-- password -->
-                <input #pswd class="form-control" type="password" placeholder="Password">
+                <input  formControlName= "pswd"  name="acno" class="form-control" type="password" placeholder="Password">
             </div>
-            
+
+            <div *ngIf="this.loginForm.get('pswd')?.touched && this.loginForm.get('pswd')?.errors" class="m-3" style="color: red;">
+                invalid password
+            </div>
+                <!-- btn -->
             <div class="m-3">
-                <input (click)="login(acno,pswd)" class="btn btn-success" type="button" value="Login" name="" id="loginbtn">
+                <input class="btn btn-success" type="submit" value="Login" name="" id="loginbtn">
             </div>
             
             
@@ -38,7 +47,7 @@
             
             </form>
             <div>
-                <label for="">Not a user? Click here to <a href=" ">register</a></label>
+                <label for="">Not a user? Click here to <a href="register ">register</a></label>
             </div>
             
             

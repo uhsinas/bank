@@ -2,22 +2,27 @@
                      
                      
                      
-                   Angular - front end technology
+          Angular - front end technology
 
-                       basic commands
+                   basic commands
+
+              install angular-npm i -g @      
                        
-                   1.create a project - ng new project -name
+           1.create a project - ng new project -name
 
-                   2. to run Angular project -ng serve
+           2. to run Angular project -ng serve
 
-                   3.to create component - ng g c component-name
+           3.to create component - ng g c component-name
+
+           4.to create service - ng g s service - name
 
 
                          basic concepts              
 
-                   1.Module - to import libraries (Root module-AppModule)
+          1.Module - to import libraries (Root module-AppModule)
 
-                   2.components - to generate ts,html,css(Root Component-AppComponent)          
+      
+         2.components - to generate ts,html,css(Root Component-AppComponent)          
 
                    3.Data Binding - sharing data within a component
 
@@ -36,4 +41,77 @@
                              
                              3.1.2.2 Event Binding using $event (event-name)="function - call($event)"
 
-                             3.1.2.3 template referencing variable:syntax:#variable name
+                             3.1.2.3 template referencing variable:syntax: #variable name
+                       
+          3.2 Two Way Binding - same time data sharing in both directional
+
+                      3.2.1 FormsModule - Import in AppModule
+
+                        ngModel - syntax: [(ngModel)] ="variable-name" , set name attribute if it is inside form tag
+
+                   4.Component Path set up, router - outlet selector
+
+                   5.Depending Injection - inside constructor of a class           
+
+                   6.Angular services
+
+                   7.ngSubmit
+
+
+                                     validate form
+
+                   8.Angular form
+
+               8.1 Template Driven Form
+
+                8.2 Model Driven Form 
+                
+                -eg: ReactiveForm - import ReactiveFormsModule
+                ( must contain:-form group , form array , form control)
+
+
+                9.Angular directives - DOM manipulation
+
+                9.1 component directives
+
+                9.2 structural directives - prefix *
+                  
+                    9.2.1 *ngIf
+
+
+
+
+
+
+
+
+
+                    withdraw(acno: any, pswd: any,amt:any) {
+
+      let userDetails = this.database
+      const amount = parseInt(amt)
+      if (acno in userDetails) {
+        if (pswd == userDetails[acno].password) {
+          if(userDetails[acno]['balance']>amount){
+            userDetails[acno]['balance']-=amount
+          
+
+          
+          this.saveDetails()
+          return userDetails[acno]['balance']
+  
+        }
+        else{
+          alert('Insufficient Balance')
+          return false
+        }
+        else {
+          alert('Incorrect Password')
+          return false
+        }
+      }
+      else {
+        alert("User doesn't exist")
+        return false
+      }
+      }}}
