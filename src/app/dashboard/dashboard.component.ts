@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { DataService } from '../database/data.service';
 
 @Component({
@@ -32,10 +33,14 @@ withdrawForm = this.formBuilder.group({
 //currentuser
 user:any;
 
-  constructor(private formBuilder:FormBuilder, private dataservice:DataService) { }
+  constructor(private formBuilder:FormBuilder, private dataservice:DataService,private router:Router) { }
 
   ngOnInit(): void {
     this.user=this.dataservice.currentuser
+    if(!localStorage.getItem('currentacno')){
+      alert('please log in')
+      this.router.navigateByUrl('')
+    }
   }
 
 deposit(){
@@ -79,4 +84,9 @@ if( this.withdrawForm.valid){
 }
  }
 
+ logout(){
+  localStorage.removeItem('currentacno')
+  localStorage.removeItem('currentuser')
+  this.router.navigateByUrl('')
+ }
  }

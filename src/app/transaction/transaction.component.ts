@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from '../database/data.service';
 
 @Component({
   selector: 'app-transaction',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TransactionComponent implements OnInit {
 
-  constructor() { }
+  acno:any;
+  transaction:any
+  constructor(private dataservice:DataService) { }
 
   ngOnInit(): void {
+    //get the current acno
+    this.acno =this.dataservice.currentacno
+    this.transaction =this.dataservice.gettransaction(this.acno)
+    console.log(this.transaction);
+    
   }
 
 }
